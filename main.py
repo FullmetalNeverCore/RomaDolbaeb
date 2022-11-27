@@ -35,16 +35,24 @@ intents.message_content = True
 client = commands.Bot(command_prefix='/', intents=intents)
 FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5','options': '-vn'}
 
+
+
+
+@client.event
+async def on_ready():
+    print("Ti cho kibersportsmen?!")
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="/silikonovieRoma"))
+
 @client.command()
 async def leaveRoma(ctx):
-    voicetrue = ctx.author.voice
-    mevoicetrue = ctx.guild.me.voice
-    if voicetrue is None:
-        return await ctx.send('You are not currently in the same voice channel as I am.')
-    if mevoicetrue is None:
-        return await ctx.send('Im not currently in any voice channel!')
-    await ctx.voice_client.disconnect()
-
+    if int(ctx.author.id) != 249287459672686593:
+        voicetrue = ctx.author.voice
+        mevoicetrue = ctx.guild.me.voice
+        if voicetrue is None:
+                return await ctx.send('You are not currently in the same voice channel as I am.')
+        if mevoicetrue is None:
+                return await ctx.send('Im not currently in any voice channel!')
+        await ctx.voice_client.disconnect()
 
 
 @client.command()
