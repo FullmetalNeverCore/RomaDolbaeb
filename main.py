@@ -21,6 +21,7 @@ try:
 except Exception as e:
     print(e)
     libs.append('discord.py')
+    libs.append('discord.py[voice]')
 
 
 if (len(libs) > 0):
